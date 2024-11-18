@@ -1,0 +1,22 @@
+database:
+  url: "jdbc:mysql://localhost:3306/11.18?useUnicode=true&characterEncoding=utf8&useSSL=false"
+  username: "root"
+  password: "1123581321a"
+
+queries:
+  loadOrganizationTree: |
+    SELECT fID, fName, fPermission FROM t_Organization WHERE fID = ?
+  loadChildOrganizations: |
+    SELECT fID FROM t_Organization WHERE fHigherUpfIDs LIKE ?
+  loadUsersByOrganization: |
+    SELECT fName, fUserGUID FROM t_User WHERE fOrgIDs LIKE ?
+  loadUserPermissions: |
+    SELECT fPermission FROM t_Organization WHERE fID = ?
+  getUserOrgIDs: |
+    SELECT fOrgIDs FROM t_User WHERE fUserGUID = ?
+  getUserGUIDByFname: |
+    SELECT fUserGUID FROM t_User WHERE fName = ?
+  loadOrganizationName: |
+    SELECT fName FROM t_Organization WHERE fID = ?
+  loadUsersByFname: |
+        SELECT fName, fUserGUID FROM t_User WHERE fName = ?
